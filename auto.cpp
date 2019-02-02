@@ -29,7 +29,7 @@ int main(int argc , char *argv[])
     fd_set readfds;   
          
     //a message  
-    char *message = "ECHO Daemon v1.0 \r\n";   
+    char *message = (char*)"ECHO Daemon v1.0 \r\n";   
      
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
@@ -159,8 +159,7 @@ int main(int argc , char *argv[])
                 if ((valread = read( sd , buffer, 1024)) == 0)   
                 {   
                     //Somebody disconnected , get his details and print  
-                    getpeername(sd , (struct sockaddr*)&address , \ 
-                        (socklen_t*)&addrlen);   
+                    getpeername(sd , (struct sockaddr*)&address , \(socklen_t*)&addrlen);   
                     printf("Host disconnected , ip %s , port %d \n" ,  
                           inet_ntoa(address.sin_addr) , ntohs(address.sin_port));   
                          
