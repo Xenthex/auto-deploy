@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
         perror("socket failed"); 
         exit(EXIT_FAILURE); 
     } 
-       
+
     // Forcefully attaching socket to the port 
     if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, 
                                                   &opt, sizeof(opt))) 
@@ -33,7 +33,6 @@ int main(int argc, char const *argv[])
     address.sin_family = AF_INET; 
     address.sin_addr.s_addr = INADDR_ANY; 
     address.sin_port = htons( PORT ); 
-    printf("Awaiting connection...");
     
     // Forcefully attaching socket to the port 
     if (bind(server_fd, (struct sockaddr *)&address,  
@@ -54,6 +53,8 @@ int main(int argc, char const *argv[])
         perror("accept"); 
         exit(EXIT_FAILURE); 
     }
+    printf(new_socket);
+
     valread = read( new_socket , buffer, 1024); 
     printf("%s\n",buffer ); 
     send(new_socket , hello , strlen(hello) , 0 ); 
