@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
     int opt = 1; 
     int addrlen = sizeof(address); 
     char buffer[1024] = {0}; 
-    char *hello = (char*)"Hello from server"; 
+    char *hello = (char*)"Hey big pop!"; 
        
     // Creating socket file descriptor 
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
@@ -53,7 +53,6 @@ int main(int argc, char const *argv[])
         perror("accept"); 
         exit(EXIT_FAILURE); 
     }
-    printf(new_socket);
 
     valread = read( new_socket , buffer, 1024); 
     printf("%s\n",buffer ); 
