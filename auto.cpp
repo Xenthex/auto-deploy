@@ -6,6 +6,9 @@
 #include <netinet/in.h> 
 #include <string.h> 
 #define PORT 80 
+#define true 1
+#define false 0
+
 int main(int argc, char const *argv[]) 
 { 
     int server_fd, new_socket, valread; 
@@ -13,7 +16,7 @@ int main(int argc, char const *argv[])
     int opt = 1; 
     int addrlen = sizeof(address); 
     char buffer[1024] = {0}; 
-    char *hello = (char*)"Hello from server"; 
+    char *hello = (char*)"ECHO Daemon v1.0 \r\n"; 
        
     // Creating socket file descriptor 
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
