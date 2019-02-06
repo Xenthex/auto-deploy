@@ -127,7 +127,7 @@ int main(int argc , char *argv[])
             printf("HEY: %s\n",buffer );
            
             //send new connection greeting message  
-            send(new_socket, message, strlen(message), 0)
+            send(new_socket, message, strlen(message), 0);
                  
             puts("Welcome message sent successfully");   
                  
