@@ -36,7 +36,7 @@ int main(int argc , char *argv[])
         "Last-Modified: Wed, 18 Jun 2003 16:05:58 GMT\n"
         "ETag: \"56d-9989200-1132c580\"\n"
         "Content-Type: text/html\n"
-        "Content-Length: 15\n"
+        "Content-Length: 12\n"
         "Accept-Ranges: bytes\n"
         "Connection: close\n"
         "\n"
