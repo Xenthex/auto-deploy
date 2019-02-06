@@ -28,7 +28,7 @@ int main(int argc , char *argv[])
     fd_set readfds;   
 
     //a message  
-    char *message = (char*)"ECHO Daemon v1.0 \r\n";   
+    char *message = (char*)"Hello big pop! \r\n";   
      
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
@@ -127,10 +127,7 @@ int main(int argc , char *argv[])
             printf("HEY: %s\n",buffer );
            
             //send new connection greeting message  
-            if( send(new_socket, message, strlen(message), 0) != strlen(message) )   
-            {   
-                perror("send");   
-            }   
+            send(new_socket, message, strlen(message), 0)
                  
             puts("Welcome message sent successfully");   
                  
