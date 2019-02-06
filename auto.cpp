@@ -124,7 +124,7 @@ int main(int argc , char *argv[])
                   (address.sin_port));   
 
             int valread = read( new_socket , buffer, 1024);
-            printf("%s\n",buffer );
+            printf("HEY: %s\n",buffer );
            
             //send new connection greeting message  
             if( send(new_socket, message, strlen(message), 0) != strlen(message) )   
