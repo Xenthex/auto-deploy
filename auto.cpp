@@ -20,7 +20,7 @@ using namespace std;
 #define FALSE  0  
 #define PORT 80  
 
-char readHTML() {
+char* readHTML() {
     char output;
     string line;
     ifstream myfile ("return.html");
@@ -51,10 +51,10 @@ int main(int argc , char *argv[])
 
     //a message  
 
-    char html = readHTML();
+    char* html = readHTML();
 
     char *reply = (char*)html;
-    
+
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
     {   
