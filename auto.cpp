@@ -10,10 +10,32 @@
 #include <sys/socket.h>  
 #include <netinet/in.h>  
 #include <sys/time.h> //FD_SET, FD_ISSET, FD_ZERO macros  
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
      
 #define TRUE   1  
 #define FALSE  0  
 #define PORT 80  
+
+char readHTML() {
+    char output;
+    string line;
+    ifstream myfile ("return.html");
+    if (myfile.is_open())
+    {
+        while (getline(myfile,line))
+        {
+            output << line << '\n';
+        }
+        myfile.close();
+    }
+    else cout << "Unable to open file"; 
+
+    return output;
+}
 
 int main(int argc , char *argv[])   
 {   
@@ -29,6 +51,8 @@ int main(int argc , char *argv[])
 
     //a message  
 
+    char html = readHTML();
+
     char *reply = (char*)
         "HTTP/1.1 200 OK\n"
         "Date: Thu, 19 Feb 2009 12:27:04 GMT\n"
@@ -36,11 +60,10 @@ int main(int argc , char *argv[])
         "Last-Modified: Wed, 18 Jun 2003 16:05:58 GMT\n"
         "ETag: \"56d-9989200-1132c580\"\n"
         "Content-Type: text/html\n"
-        "Content-Length: 12\n"
+        "Content-Length: \n" << strlen(html)
         "Accept-Ranges: bytes\n"
         "Connection: close\n"
-        "\n"
-        "Hey big pop!";
+        "\n" << html;
      
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
@@ -135,8 +158,10 @@ int main(int argc , char *argv[])
             printf("New connection , socket fd is %d , ip is : %s , port : %d\n" , new_socket , inet_ntoa(address.sin_addr) , ntohs 
                   (address.sin_port));   
 
-            int valread = read( new_socket , buffer, 1024);
-            printf("HEY: %s\n",buffer );
+            int valread = read(new_socket, buffer, 1024);
+            printf("HEY: %s\n", buffer);
+            
+
            
             //send new connection greeting message  
             send(new_socket, reply, strlen(reply), 0);
