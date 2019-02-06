@@ -28,7 +28,7 @@ char* readHTML() {
     {
         while (getline(myfile,line))
         {
-            output << line << '\n';
+            output << (line << '\n');
         }
         myfile.close();
     }
