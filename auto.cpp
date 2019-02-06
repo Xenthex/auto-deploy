@@ -28,7 +28,19 @@ int main(int argc , char *argv[])
     fd_set readfds;   
 
     //a message  
-    char *message = (char*)"Hello big pop! \r\n";   
+
+    char *reply = (char*)
+        "HTTP/1.1 200 OK\n"
+        "Date: Thu, 19 Feb 2009 12:27:04 GMT\n"
+        "Server: Apache/2.2.3\n"
+        "Last-Modified: Wed, 18 Jun 2003 16:05:58 GMT\n"
+        "ETag: \"56d-9989200-1132c580\"\n"
+        "Content-Type: text/html\n"
+        "Content-Length: 15\n"
+        "Accept-Ranges: bytes\n"
+        "Connection: close\n"
+        "\n"
+        "Hey big pop!";
      
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
@@ -127,7 +139,7 @@ int main(int argc , char *argv[])
             printf("HEY: %s\n",buffer );
            
             //send new connection greeting message  
-            send(new_socket, message, strlen(message), 0);
+            send(new_socket, reply, strlen(reply), 0);
                  
             puts("Welcome message sent successfully");   
                  
