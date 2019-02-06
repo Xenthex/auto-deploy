@@ -60,10 +60,10 @@ int main(int argc , char *argv[])
         "Last-Modified: Wed, 18 Jun 2003 16:05:58 GMT\n"
         "ETag: \"56d-9989200-1132c580\"\n"
         "Content-Type: text/html\n"
-        "Content-Length: \n" << (char*)strlen(html)
+        "Content-Length: " + (char*)strlen(html) + "\n"
         "Accept-Ranges: bytes\n"
         "Connection: close\n"
-        "\n" << html;
+        html + "\n";
      
     //initialise all client_socket[] to 0 so not checked  
     for (i = 0; i < max_clients; i++)   
