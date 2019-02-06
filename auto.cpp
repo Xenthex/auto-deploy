@@ -20,7 +20,7 @@ using namespace std;
 #define FALSE  0  
 #define PORT 80  
 
-char* readHTML() {
+char readHTML() {
     char output;
     string line;
     ifstream myfile ("return.html");
